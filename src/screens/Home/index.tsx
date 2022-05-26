@@ -12,6 +12,7 @@ import {
     Title,
     Content,
 } from './styles';
+import { useNavigation } from '@react-navigation/native';
 
 interface Agents {
     id: string;
@@ -20,24 +21,29 @@ interface Agents {
 }
 
 export function Home() {
+    const navigation: any = useNavigation();
 
     const [agents, setAgents] = useState<Agents[]>([]);
     const [loading, setLoading] = useState(true);
     const [load, setLoad] = useState(false);
+
+    function openAgentScreen() {
+        navigation.navigate('Agent');
+    }
 
     useEffect(() => {
         async function loadAgents() {
             await api.get("/agents", { params: { isPlayableCharacter: true } }).then(response => {
                 response.data.data.map(agent => {
 
-                    const formattedAgent = {
+                    const formattedAgent: Agents = {
                         id: agent.uuid,
                         name: agent.displayName,
                         image: agent.displayIcon,
                     }
 
                     setAgents(oldState => [...oldState, formattedAgent]);
-                    console.log(formattedAgent);
+                    // console.log(formattedAgent);
                 })
             })
         }
@@ -48,7 +54,6 @@ export function Home() {
         }
         setLoading(false);
     }, [])
-
 
     return (
         <Container>
@@ -61,12 +66,15 @@ export function Home() {
 
 
             {!loading &&
-                <>
-                    <Content>
-                        {agents.map(agent => <Card key={agent.id} image={agent.image} />)}
-                    </Content>
-                </>
-
+                <Content>
+                    {agents.map(agent =>
+                        <Card
+                            key={agent.id}
+                            image={agent.image}
+                            onPress={openAgentScreen}
+                        />
+                    )}
+                </Content>
             }
 
 

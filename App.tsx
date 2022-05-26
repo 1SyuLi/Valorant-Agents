@@ -1,10 +1,11 @@
 import React from 'react';
+import { UseCachedResources } from './src/hooks/UseCachedResources';
 
 import { ThemeProvider } from 'styled-components/native';
 import theme from './src/Global/styles/theme';
-import { UseCachedResources } from './src/hooks/UseCachedResources';
 
-import { Home } from './src/screens/Home';
+import { NavigationContainer } from '@react-navigation/native';
+import { AppRoutes } from './src/routes/app.routes';
 
 export default function App() {
     const isLoadingComplete = UseCachedResources();
@@ -15,7 +16,9 @@ export default function App() {
 
     return (
         <ThemeProvider theme={theme}>
-            <Home />
+            <NavigationContainer>
+                <AppRoutes />
+            </NavigationContainer>
         </ThemeProvider>
     );
 }
