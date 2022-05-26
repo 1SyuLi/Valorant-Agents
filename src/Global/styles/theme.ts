@@ -1,6 +1,7 @@
 export default {
     colors: {
         background: '#18191A',
+        shape: "#313234",
         white: '#fff',
     },
     fonts: {

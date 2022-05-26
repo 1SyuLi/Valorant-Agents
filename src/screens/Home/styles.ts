@@ -22,3 +22,13 @@ export const Title = styled.Text`
     font-family: ${({ theme }) => theme.fonts.medium};
     font-size: ${RFValue(18)}px;
 `;
+
+export const Content = styled.View`
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-top: 60px;
+    margin-left: 6px;
+    margin-right: 6px;
+`;
