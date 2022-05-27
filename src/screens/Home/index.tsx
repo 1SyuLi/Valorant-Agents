@@ -18,6 +18,7 @@ interface Agents {
     id: string;
     name: string;
     image: string;
+    background: string;
 }
 
 export function Home() {
@@ -27,8 +28,8 @@ export function Home() {
     const [loading, setLoading] = useState(true);
     const [load, setLoad] = useState(false);
 
-    function openAgentScreen() {
-        navigation.navigate('Agent');
+    function openAgentScreen(agent: Agents) {
+        navigation.navigate('Agent', { agent });
     }
 
     useEffect(() => {
@@ -40,6 +41,7 @@ export function Home() {
                         id: agent.uuid,
                         name: agent.displayName,
                         image: agent.displayIcon,
+                        background: agent.fullPortraitV2,
                     }
 
                     setAgents(oldState => [...oldState, formattedAgent]);
@@ -71,7 +73,7 @@ export function Home() {
                         <Card
                             key={agent.id}
                             image={agent.image}
-                            onPress={openAgentScreen}
+                            onPress={() => openAgentScreen(agent)}
                         />
                     )}
                 </Content>

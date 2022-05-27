@@ -13,3 +13,12 @@ export const BackButton = styled(Feather)`
     margin-top: 45px;
     margin-left: 6px;
 `;
+
+export const BackGroundImage = styled.ImageBackground`
+    width: 500px;
+    height: 500px;
+    opacity: 0.1;
+    position: absolute;
+    top: 80px;
+    left: 0px;
+`;
