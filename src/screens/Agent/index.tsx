@@ -3,6 +3,7 @@ import { StatusBar } from 'expo-status-bar';
 
 import { TouchableOpacity } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
+import { Role } from '../Home';
 
 import {
     Container,
@@ -16,10 +17,20 @@ import {
     ClassDescription,
 } from './styles';
 
+interface Agents {
+    agent: {
+        id: string;
+        name: string;
+        image: string;
+        background: string;
+        role: Role;
+    }
+}
+
 export function Agent() {
     const navigation = useNavigation();
     const route: any = useRoute();
-    const { agent } = route.params;
+    const { agent }: Agents = route.params;
 
     function handleGoBack() {
         navigation.goBack();
@@ -34,19 +45,25 @@ export function Agent() {
                 <BackButton name="chevron-left" />
             </TouchableOpacity>
 
-            <BackGroundImage source={{ uri: agent.background }} />
+            <BackGroundImage
+                source={{ uri: agent.background }}
+            />
 
             <Header>
-                <AgentName>Fade</AgentName>
+                <AgentName>{agent.name}</AgentName>
+
                 <Class>
-                    <ClassName>Initiator</ClassName>
+                    <ClassName>
+                        {agent.role.name}
+                    </ClassName>
+
                     <ClassIcon
-                        source={{ uri: 'https://media.valorant-api.com/agents/roles/1b47567f-8f7b-444b-aae3-b0c634622d10/displayicon.png' }}
+                        source={{ uri: agent.role.icon }}
                     />
                 </Class>
+
                 <ClassDescription>
-                    Initiators challenge angles by setting up their team
-                    to enter contested ground and push defenders away.
+                    {agent.role.description}
                 </ClassDescription>
             </Header>
         </Container>

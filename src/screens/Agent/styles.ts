@@ -17,7 +17,7 @@ export const BackButton = styled(Feather)`
 export const BackGroundImage = styled.ImageBackground`
     width: 300px;
     height: 300px;
-    opacity: 0.1;
+    opacity: 0.2;
     position: absolute;
     top: 100px;
     right: -30px;

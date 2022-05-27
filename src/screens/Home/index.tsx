@@ -14,11 +14,18 @@ import {
 } from './styles';
 import { useNavigation } from '@react-navigation/native';
 
+export type Role = {
+    name: string;
+    description: string;
+    icon: string;
+};
+
 interface Agents {
     id: string;
     name: string;
     image: string;
     background: string;
+    role: Role;
 }
 
 export function Home() {
@@ -42,6 +49,11 @@ export function Home() {
                         name: agent.displayName,
                         image: agent.displayIcon,
                         background: agent.fullPortraitV2,
+                        role: {
+                            name: agent.role.displayName,
+                            description: agent.role.description,
+                            icon: agent.role.displayIcon,
+                        },
                     }
 
                     setAgents(oldState => [...oldState, formattedAgent]);
