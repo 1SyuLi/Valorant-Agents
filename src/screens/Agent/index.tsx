@@ -15,7 +15,9 @@ import {
     ClassName,
     ClassIcon,
     ClassDescription,
+    Skills,
 } from './styles';
+import { SkillCard } from './SkillCard';
 
 interface Agents {
     agent: {
@@ -66,6 +68,10 @@ export function Agent() {
                     {agent.role.description}
                 </ClassDescription>
             </Header>
+
+            <Skills>
+                <SkillCard />
+            </Skills>
         </Container>
     );
 }

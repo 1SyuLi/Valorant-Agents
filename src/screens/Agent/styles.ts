@@ -1,6 +1,7 @@
 import styled from 'styled-components/native';
 import { Feather } from '@expo/vector-icons';
 import { RFValue } from 'react-native-responsive-fontsize';
+import { ScrollView } from 'react-native';
 
 export const Container = styled.View`
    flex: 1;
@@ -61,4 +62,9 @@ export const ClassDescription = styled.Text`
     line-height: 26px;
     opacity: 0.8;
     margin-top: 6px;
+`;
+
+export const Skills = styled(ScrollView)`
+    width: 100%;
+    margin: 20px 24px 0px 24px;
 `;
