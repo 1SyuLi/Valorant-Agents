@@ -71,6 +71,8 @@ export function Agent() {
 
             <Skills>
                 <SkillCard />
+                <SkillCard />
+                <SkillCard />
             </Skills>
         </Container>
     );
