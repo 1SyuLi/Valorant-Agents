@@ -20,12 +20,19 @@ export type Role = {
     icon: string;
 };
 
+export type Abilities = {
+    name: string;
+    description: string;
+    icon: string;
+}
+
 interface Agents {
     id: string;
     name: string;
     image: string;
     background: string;
     role: Role;
+    abilities: Abilities[];
 }
 
 export function Home() {
@@ -54,10 +61,16 @@ export function Home() {
                             description: agent.role.description,
                             icon: agent.role.displayIcon,
                         },
+                        abilities: agent.abilities.map(ability => {
+                            return {
+                                name: ability.displayName,
+                                description: ability.description,
+                                icon: ability.displayIcon,
+                            }
+                        })
                     }
 
                     setAgents(oldState => [...oldState, formattedAgent]);
-                    // console.log(formattedAgent);
                 })
             })
         }

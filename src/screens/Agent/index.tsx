@@ -3,7 +3,7 @@ import { StatusBar } from 'expo-status-bar';
 
 import { TouchableOpacity } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
-import { Role } from '../Home';
+import { Abilities, Role } from '../Home';
 
 import {
     Container,
@@ -26,6 +26,7 @@ interface Agents {
         image: string;
         background: string;
         role: Role;
+        abilities: Abilities[];
     }
 }
 
@@ -70,9 +71,14 @@ export function Agent() {
             </Header>
 
             <Skills>
-                <SkillCard />
-                <SkillCard />
-                <SkillCard />
+                {agent.abilities.map(agent =>
+                    <SkillCard
+                        key={agent.name}
+                        name={agent.name}
+                        description={agent.description}
+                        image={agent.icon}
+                    />
+                )}
             </Skills>
         </Container>
     );

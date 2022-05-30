@@ -5,7 +5,6 @@ export const Container = styled.View`
    flex: 1;
    width: 100%;
    flex-direction: row;
-   justify-content: space-between;
    align-items: center;
    margin-bottom: 20px;
 `;
@@ -28,8 +27,8 @@ export const SkillName = styled.Text`
 
 export const SkillDescription = styled.Text`
     font-size: ${RFValue(12)}px;
-    padding-right: 119px;
     text-align: justify;
     color: ${({ theme }) => theme.colors.description};
     opacity: 0.7;
+    width: 260px;
 `;
